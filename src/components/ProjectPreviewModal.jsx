@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, X } from 'lucide-react';
 function ProjectPreviewModal({ project, onClose }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const lastWheelAt = useRef(0);
-  const touchStartY = useRef(null);
+  const touchStart = useRef(null);
 
   useEffect(() => {
     if (!project) return undefined;
@@ -38,19 +38,22 @@ function ProjectPreviewModal({ project, onClose }) {
     goTo(event.deltaY > 0 ? 1 : -1);
   };
   const handleTouchStart = (event) => {
-    touchStartY.current = event.touches[0]?.clientY ?? null;
+    const touch = event.touches[0];
+    touchStart.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
   };
   const handleTouchEnd = (event) => {
-    if (touchStartY.current === null) return;
-    const endY = event.changedTouches[0]?.clientY ?? touchStartY.current;
-    const distance = touchStartY.current - endY;
-    touchStartY.current = null;
+    if (!touchStart.current) return;
+    const touch = event.changedTouches[0];
+    const distanceX = touchStart.current.x - (touch?.clientX ?? touchStart.current.x);
+    const distanceY = touchStart.current.y - (touch?.clientY ?? touchStart.current.y);
+    touchStart.current = null;
+    const distance = Math.abs(distanceX) >= Math.abs(distanceY) ? distanceX : distanceY;
     if (Math.abs(distance) < 42) return;
     goTo(distance > 0 ? 1 : -1);
   };
 
   return (
-    <div className="project-preview-modal" role="dialog" aria-modal="true" aria-label={`${project.title} 完整预览`} onWheel={handleWheel} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+    <div className="project-preview-modal" role="dialog" aria-modal="true" aria-label={`${project.title} 完整预览`} onWheel={handleWheel}>
       <header className="project-preview-header">
         <div>
           <span>{project.eyebrow}</span>
@@ -58,7 +61,7 @@ function ProjectPreviewModal({ project, onClose }) {
         </div>
         <button className="project-preview-close" onClick={onClose} aria-label="关闭完整预览"><X size={21} /></button>
       </header>
-      <div className="project-preview-stage">
+      <div className="project-preview-stage" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
         <button className="project-preview-nav" onClick={() => goTo(-1)} disabled={activeIndex === 0} aria-label="上一张"><ArrowLeft size={20} /></button>
         <div className="project-preview-image-wrap">
           <img key={gallery[activeIndex]} className="project-preview-image" src={gallery[activeIndex]} alt={`${project.title} ${activeIndex + 1}`} decoding="async" />

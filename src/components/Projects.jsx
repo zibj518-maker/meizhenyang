@@ -1,9 +1,10 @@
 import { ArrowLeft, ArrowRight, ArrowUpRight, Maximize2 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { timeline } from '../data/portfolio';
 
 function Projects({ projects, activeProject, onChange, onPreview }) {
   const [activeTimeline, setActiveTimeline] = useState(2);
+  const touchStart = useRef(null);
   const project = projects[activeProject];
 
   useEffect(() => {
@@ -13,13 +14,26 @@ function Projects({ projects, activeProject, onChange, onPreview }) {
   const move = (direction) => {
     onChange((activeProject + direction + projects.length) % projects.length);
   };
+  const handleTouchStart = (event) => {
+    const touch = event.touches[0];
+    touchStart.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
+  };
+  const handleTouchEnd = (event) => {
+    if (!touchStart.current) return;
+    const touch = event.changedTouches[0];
+    const deltaX = touchStart.current.x - (touch?.clientX ?? touchStart.current.x);
+    const deltaY = touchStart.current.y - (touch?.clientY ?? touchStart.current.y);
+    touchStart.current = null;
+    if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+    move(deltaX > 0 ? 1 : -1);
+  };
 
   return (
     <section id="projects" className="projects-section section-dark section-pad">
       <div className="section-inner">
         <div className="section-label"><span>Selected projects</span><span>05 / 06</span></div>
         <div className="projects-heading"><h2 className="display-title">PROJECT<br /><span>INDEX</span></h2><p>Some things I have helped<br />make more possible.</p></div>
-        <div className="project-feature">
+        <div className="project-feature" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
           <div className="project-visual">
             <div className={`project-frame ${project.imageFit ? `media-${project.imageFit}` : ''}`}><img src={project.image} alt="" loading="lazy" decoding="async" /><div className="project-frame-overlay"><span>{project.id} / {String(projects.length).padStart(2, '0')}</span><span>Static image / Art direction</span></div><button className="project-preview-button" onClick={() => onPreview(project)} aria-label={`预览项目：${project.title}`}><Maximize2 size={15} /><span>预览</span></button></div>
             <div className="visual-caption"><span>Select / Switch the story</span><span>{project.year}</span></div>
