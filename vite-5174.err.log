@@ -1,0 +1,47 @@
+[2m00:26:51[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: frameId is not defined
+[39m > src/components/Navigation.jsx:42:27
+    40 |      window.addEventListener('resize', updateTheme);
+    41 |      return () => {
+    42 |        cancelAnimationFrame(frameId);
+       |                             ^
+    43 |      window.removeEventListener('scroll', updateTheme);
+    44 |      window.removeEventListener('resize', updateTheme);
+ > Object.react_stack_bottom_frame node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:26001:12
+ > runWithFiberInDEV node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > commitHookEffectListUnmount node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13316:16
+ > commitHookPassiveUnmountEffects node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13347:10
+ > disconnectPassiveEffect node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:16216:10
+ > recursivelyTraverseDisconnectPassiveEffects node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:16204:8
+ > disconnectPassiveEffect node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:16230:10
+ > recursivelyTraverseDisconnectPassiveEffects node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:16204:8
+ > disconnectPassiveEffect node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:16221:10
+
+[2m00:26:51[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <Navigation> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+[2m00:26:51[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: frameId is not defined
+[39m > src/components/Navigation.jsx:42:27
+    40 |      window.addEventListener('resize', updateTheme);
+    41 |      return () => {
+    42 |        cancelAnimationFrame(frameId);
+       |                             ^
+    43 |      window.removeEventListener('scroll', updateTheme);
+    44 |      window.removeEventListener('resize', updateTheme);
+ > Object.react_stack_bottom_frame node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:26001:12
+ > runWithFiberInDEV node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > commitHookEffectListUnmount node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13316:16
+ > commitHookPassiveUnmountEffects node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13347:10
+ > commitPassiveUnmountEffectsInsideOfDeletedTree_begin node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:16264:12
+ > recursivelyTraversePassiveUnmountEffects node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:16085:12
+ > commitPassiveUnmountOnFiber node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:16127:10
+ > flushPassiveEffects node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:18428:8
+ > flushPendingEffects node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:18358:13
+
+[2m00:26:51[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <Navigation> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+[2m00:28:04[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /src/components/ThreeScene.jsx (resolved id: C:/Users/47972/Documents/个人站 2/src/components/ThreeScene.jsx) in C:/Users/47972/Documents/个人站 2/src/components/Hero.jsx. Does the file exist?
