@@ -36,7 +36,7 @@ function Projects({ projects, activeProject, onChange, onPreview }) {
         <div className="project-feature" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
           <div className="project-visual">
             <div className={`project-frame ${project.imageFit ? `media-${project.imageFit}` : ''}`}><img src={project.image} alt="" loading="lazy" decoding="async" /><div className="project-frame-overlay"><span>{project.id} / {String(projects.length).padStart(2, '0')}</span><span>Static image / Art direction</span></div><button className="project-preview-button" onClick={() => onPreview(project)} aria-label={`预览项目：${project.title}`}><Maximize2 size={15} /><span>预览</span></button></div>
-            <div className="visual-caption"><span>Select / Switch the story</span><span>{project.year}</span></div>
+            <div className="visual-caption"><span>左右滑动查看更多</span><span>{project.year}</span></div>
           </div>
           <div className="project-info">
             <span className="project-eyebrow">{project.eyebrow}</span>
